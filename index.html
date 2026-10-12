@@ -1,0 +1,1521 @@
+```html
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معماری قدرت ذهنی | بررسی علمی و تعاملی تاب‌آوری شناختی</title>
+    <!-- قلم استاندارد وزیرمتن از گوگل فونت -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- آیکون‌های استاندارد FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #1d4ed8;
+            --primary-accent: #2563eb;
+            --primary-light: #eff6ff;
+            --primary-subtle: #dbeafe;
+            --accent-cyan: #0284c7;
+            --text-main: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --bg-page: #f8fafc;
+            --bg-card: #ffffff;
+            --border-ui: #e2e8f0;
+            --border-hover: #93c5fd;
+            --warning-bg: #fffbeb;
+            --warning-border: #fcd34d;
+            --warning-text: #92400e;
+            --success: #059669;
+            --radius-xl: 24px;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+            --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.06);
+            --shadow-glow: 0 15px 35px -5px rgba(37, 99, 235, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.9;
+            direction: rtl;
+            text-align: right;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* نوار نشانگر اسکرول مطالعه */
+        #scroll-tracker {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to left, var(--primary), var(--accent-cyan));
+            width: 0%;
+            z-index: 10000;
+            transition: width 0.1s linear;
+        }
+
+        /* سربرگ و ناوبری */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-ui);
+            z-index: 1000;
+            padding: 14px 24px;
+        }
+
+        .nav-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-brand i {
+            font-size: 1.6rem;
+            color: var(--primary-accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.92rem;
+            padding: 8px 14px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        /* کانتینر اصلی */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px 80px 24px;
+        }
+
+        /* بخش هدر / Hero */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 48px;
+            align-items: center;
+            padding: 40px 0 70px 0;
+        }
+
+        .badge-academic {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border: 1px solid var(--primary-subtle);
+        }
+
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 900;
+            line-height: 1.35;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            text-align: justify;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 26px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.96rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.25s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 8px 20px -4px rgba(29, 78, 216, 0.35);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px -4px rgba(29, 78, 216, 0.45);
+        }
+
+        .btn-outline {
+            background: #ffffff;
+            color: var(--text-main);
+            border: 1px solid var(--border-ui);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .hero-banner {
+            position: relative;
+        }
+
+        .hero-image-wrapper {
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            border: 1px solid var(--border-ui);
+            box-shadow: var(--shadow-md);
+            background: #ffffff;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 390px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-badge-overlay {
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 16px 20px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-ui);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .hero-badge-overlay i {
+            font-size: 2rem;
+            color: var(--primary-accent);
+        }
+
+        .hero-badge-overlay div h4 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .hero-badge-overlay div p {
+            margin: 0;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* سرنویس سکشن‌ها */
+        .section-heading {
+            text-align: center;
+            max-width: 760px;
+            margin: 70px auto 40px auto;
+        }
+
+        .section-heading .pill-tag {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 4px 14px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 12px;
+            border: 1px solid var(--primary-subtle);
+        }
+
+        .section-heading h2 {
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 14px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-heading p {
+            color: var(--text-secondary);
+            font-size: 1.02rem;
+        }
+
+        /* مدل ۴ ستون علمی (4Cs Model) */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: #ffffff;
+            border: 1px solid var(--border-ui);
+            padding: 12px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--primary-accent);
+            color: var(--primary);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 6px 16px -2px rgba(29, 78, 216, 0.35);
+        }
+
+        .framework-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-ui);
+            border-radius: var(--radius-xl);
+            padding: 38px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .pane-layout {
+            display: none;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 36px;
+            align-items: center;
+        }
+
+        .pane-layout.active {
+            display: grid;
+            animation: fadeIn 0.35s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pane-main h3 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pane-main .term-en {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            direction: ltr;
+            display: inline-block;
+        }
+
+        .pane-main .summary {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin: 14px 0 20px 0;
+            text-align: justify;
+        }
+
+        .academic-points {
+            list-style: none;
+        }
+
+        .academic-points li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.94rem;
+            color: var(--text-main);
+        }
+
+        .academic-points li i {
+            color: var(--primary-accent);
+            margin-top: 6px;
+            font-size: 0.85rem;
+        }
+
+        .pane-meta {
+            background: var(--primary-light);
+            border-right: 4px solid var(--primary);
+            padding: 24px;
+            border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+            border-top: 1px solid var(--primary-subtle);
+            border-bottom: 1px solid var(--primary-subtle);
+            border-left: 1px solid var(--primary-subtle);
+        }
+
+        .pane-meta h4 {
+            font-size: 0.98rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pane-meta p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* ابزار تعاملی تنفس هدایت‌شده (Box Breathing) */
+        .breath-tool-container {
+            background: linear-gradient(145deg, #ffffff, #f0f7ff);
+            border: 1px solid var(--border-hover);
+            border-radius: var(--radius-xl);
+            padding: 44px;
+            box-shadow: var(--shadow-sm);
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .breath-info h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 14px;
+            color: var(--text-main);
+        }
+
+        .breath-info p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 0.98rem;
+            text-align: justify;
+        }
+
+        .breath-metrics {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 26px;
+        }
+
+        .metric-badge {
+            background: #ffffff;
+            border: 1px solid var(--border-ui);
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .metric-badge i {
+            color: var(--accent-cyan);
+        }
+
+        .breath-visual-arena {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .breath-circle {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, rgba(37, 99, 235, 0.03) 70%);
+            border: 3px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: transform 4s ease-in-out, background-color 0.4s ease, border-color 0.4s ease;
+            box-shadow: 0 0 25px rgba(37, 99, 235, 0.15);
+        }
+
+        .breath-circle.inhale {
+            transform: scale(1.3);
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, rgba(37, 99, 235, 0.08) 70%);
+            border-color: var(--primary-accent);
+        }
+
+        .breath-circle.hold {
+            transform: scale(1.3);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 35px rgba(2, 132, 199, 0.3);
+        }
+
+        .breath-circle.exhale {
+            transform: scale(1);
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, rgba(37, 99, 235, 0.01) 70%);
+            border-color: #94a3b8;
+        }
+
+        .breath-phase-text {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+            transition: all 0.3s;
+        }
+
+        .breath-counter {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--text-main);
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* آزمون تعاملی خودارزیابی */
+        .assessment-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-ui);
+            border-radius: var(--radius-xl);
+            padding: 38px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .quiz-item {
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border-ui);
+        }
+
+        .quiz-item:first-child {
+            padding-top: 0;
+        }
+
+        .quiz-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .quiz-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quiz-title .dimension-tag {
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--primary-subtle);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .option-box {
+            padding: 14px 12px;
+            border: 1px solid var(--border-ui);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+            user-select: none;
+        }
+
+        .option-box:hover {
+            border-color: var(--primary-accent);
+            background: var(--primary-light);
+        }
+
+        .option-box.selected {
+            background: var(--primary-light);
+            border-color: var(--primary);
+            color: var(--primary);
+            font-weight: 700;
+            box-shadow: inset 0 0 0 1px var(--primary);
+        }
+
+        .quiz-feedback {
+            display: none;
+            margin-top: 30px;
+            border-radius: var(--radius-lg);
+            padding: 26px;
+            border: 1px solid transparent;
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        .quiz-feedback.show {
+            display: block;
+        }
+
+        .quiz-feedback h4 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quiz-feedback p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* مقایسه شناختی: ارزیابی تهدید در برابر چالش */
+        .comparison-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .cognitive-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid var(--border-ui);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .cognitive-card.challenge-type {
+            border-top: 4px solid var(--primary);
+        }
+
+        .cognitive-card.threat-type {
+            border-top: 4px solid #94a3b8;
+        }
+
+        .card-header-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .card-header-bar i {
+            font-size: 1.6rem;
+        }
+
+        .challenge-type .card-header-bar i {
+            color: var(--primary);
+        }
+
+        .threat-type .card-header-bar i {
+            color: #64748b;
+        }
+
+        .card-header-bar h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--border-ui);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li i {
+            margin-top: 5px;
+            font-size: 0.85rem;
+        }
+
+        .challenge-type .feature-list li i {
+            color: var(--success);
+        }
+
+        .threat-type .feature-list li i {
+            color: #ef4444;
+        }
+
+        /* کادر الزامی: نیاز به بررسی علمی (راستی‌آزمایی مستقل) */
+        .verification-container {
+            background: var(--warning-bg);
+            border: 2px dashed var(--warning-border);
+            border-radius: var(--radius-xl);
+            padding: 34px;
+            margin: 60px 0 30px 0;
+        }
+
+        .verification-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fef3c7;
+            color: var(--warning-text);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            border: 1px solid #fde68a;
+        }
+
+        .verification-container h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #78350f;
+            margin-bottom: 12px;
+        }
+
+        .verification-container p {
+            color: var(--warning-text);
+            font-size: 0.96rem;
+            line-height: 1.85;
+            text-align: justify;
+            margin-bottom: 12px;
+        }
+
+        .verification-container p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* رفرنس‌ها و مستندات دانشگاهی */
+        .reference-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border-ui);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .reference-wrapper h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .citation-item {
+            margin-bottom: 18px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-ui);
+        }
+
+        .citation-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .citation-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .citation-apa {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            direction: ltr;
+            text-align: left;
+            background: #f1f5f9;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            color: #334155;
+            display: block;
+            margin-top: 6px;
+            word-break: break-all;
+        }
+
+        /* فوتر */
+        footer {
+            border-top: 1px solid var(--border-ui);
+            background: #ffffff;
+            padding: 40px 24px;
+            margin-top: 70px;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ریسپانسیو و تنظیمات موبایل */
+        @media (max-width: 992px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .badge-academic {
+                margin: 0 auto 16px auto;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .hero p {
+                text-align: center;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-badge-overlay {
+                right: 50%;
+                transform: translateX(50%);
+                bottom: -20px;
+                width: 85%;
+            }
+
+            .pane-layout {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .breath-tool-container {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 1.85rem;
+            }
+
+            .framework-card {
+                padding: 24px 18px;
+            }
+
+            .breath-tool-container {
+                padding: 26px 18px;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .metric-badge {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .breath-metrics {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- نوار پیشرفت مطالعه در بالای صفحه -->
+    <div id="scroll-tracker"></div>
+
+    <!-- ناوبری صفحه -->
+    <header>
+        <div class="nav-wrapper">
+            <a href="#" class="nav-brand">
+                <i class="fa-solid fa-brain"></i>
+                <span>قدرت ذهنی</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#model-4c"><i class="fa-solid fa-shapes"></i> مدل علمی 4C</a></li>
+                <li><a href="#tactical-breath"><i class="fa-solid fa-lungs"></i> تمرین تنفس عصبی</a></li>
+                <li><a href="#assessment"><i class="fa-solid fa-clipboard-check"></i> خودارزیابی</a></li>
+                <li><a href="#cognitive-models"><i class="fa-solid fa-scale-balanced"></i> ارزیابی شناختی</a></li>
+                <li><a href="#verification"><i class="fa-solid fa-circle-exclamation"></i> راستی‌آزمایی علمی</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- بخش آغازین / Hero -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="badge-academic">
+                    <i class="fa-solid fa-microscope"></i>
+                    روانشناسی سلامت و علوم اعصاب شناختی
+                </div>
+                <h1>معماری <span>قدرت ذهنی</span>؛ علم تاب‌آوری در برابر فشار روانی</h1>
+                <p>
+                    قدرت ذهنی (Mental Toughness) نفی احساسات یا یک شعار انگیزشی نیست؛ در ادبیات تجربی روانشناسی، این مفهوم به عنوان ساختاری شخصیتی تعریف می‌شود که میزان انعطاف‌پذیری، تمرکز شناختی و تداوم رفتار هدفمند را در مواجهه با استرس، تغییر و ناملایمات تبیین می‌کند.
+                </p>
+                <div class="hero-actions">
+                    <a href="#model-4c" class="btn btn-primary">
+                        <span>کاوش مدل ۴ ستون (4Cs)</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                    <a href="#tactical-breath" class="btn btn-outline">
+                        <i class="fa-solid fa-play"></i>
+                        <span>ابزار تنفس فعال‌ساز واگ</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-banner">
+                <div class="hero-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80" alt="تمرکز شناختی و تنظیم عصبی">
+                </div>
+                <div class="hero-badge-overlay">
+                    <i class="fa-solid fa-certificate"></i>
+                    <div>
+                        <h4>پایه نظری مستند</h4>
+                        <p>برگرفته از پژوهش‌های کلاف (۲۰۰۲) و کوباسا (۱۹۷۹)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- بخش مدل ۴ ستون علمی سرسختی ذهنی (4Cs Model) -->
+        <section id="model-4c">
+            <div class="section-heading">
+                <span class="pill-tag">مدل ساختاری</span>
+                <h2>چارچوب ۴ مؤلفه‌ای سرسختی ذهنی (Peter Clough)</h2>
+                <p>
+                    پروفسور پیتر کلاف (Peter Clough) با بسط نظریه «سرسختی روان‌شناختی» سوزان کوباسا، سازه سرسختی ذهنی را در ۴ بعد متمایز فرمول‌بندی کرد:
+                </p>
+            </div>
+
+            <div class="tabs-nav">
+                <button class="tab-btn active" onclick="activateTab('control')">
+                    <i class="fa-solid fa-gamepad"></i>
+                    <span>۱. کنترل (Control)</span>
+                </button>
+                <button class="tab-btn" onclick="activateTab('commitment')">
+                    <i class="fa-solid fa-crosshairs"></i>
+                    <span>۲. تعهد (Commitment)</span>
+                </button>
+                <button class="tab-btn" onclick="activateTab('challenge')">
+                    <i class="fa-solid fa-mountain-sun"></i>
+                    <span>۳. چالش (Challenge)</span>
+                </button>
+                <button class="tab-btn" onclick="activateTab('confidence')">
+                    <i class="fa-solid fa-shield"></i>
+                    <span>۴. اعتمادبه‌نفس (Confidence)</span>
+                </button>
+            </div>
+
+            <div class="framework-card">
+                <!-- بعد اول: کنترل -->
+                <div class="pane-layout active" id="pane-control">
+                    <div class="pane-main">
+                        <h3>
+                            کنترل
+                            <span class="term-en">(Emotional & Life Control)</span>
+                        </h3>
+                        <p class="summary">
+                            شامل دو زیرشاخه است: «کنترل هیجانی» (توانایی بازداری پاسخ‌های هیجانی ناگهانی) و «کنترل زندگی» (ادراک کنترل درونی که به فرد باور می‌دهد پیامدها تابع تلاش او هستند نه شانس).
+                        </p>
+                        <ul class="academic-points">
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <div><strong>منبع کنترل درونی (Internal Locus of Control):</strong> طبق نظریه راتر (۱۹۶۶)، فرد احساس کنترل بالایی بر مسیر اقدام خود دارد.</div>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <div><strong>مهار تکانه:</strong> کاهش واکنش‌های خودکار بادامک مغز (Amygdala) از طریق بازداری قشر پیش‌پیشانی.</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pane-meta">
+                        <h4><i class="fa-solid fa-lightbulb"></i> کاربرد عملی در بحران</h4>
+                        <p>
+                            تمرکز بر مرزگذاری مشخص میان «آنچه مستقیماً در حوزه انتخاب من است» (تلاش، کلام، رفتار) و «آنچه از کنترل من خارج است» (رفتار دیگران، تصادفات محیطی).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- بعد دوم: تعهد -->
+                <div class="pane-layout" id="pane-commitment">
+                    <div class="pane-main">
+                        <h3>
+                            تعهد
+                            <span class="term-en">(Goal Orientation & Stickability)</span>
+                        </h3>
+                        <p class="summary">
+                            سنجش پایداری رفتاری برای رسیدن به اهداف حتی در شرایطی که هیجان اولیه فروکش کرده یا موانع جدی پدید آمده‌اند. این بعد پیوند وثیقی با مفهوم عزم و سرسختی (Grit) در پژوهش‌های آنجلا داک‌ورث دارد.
+                        </p>
+                        <ul class="academic-points">
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <div><strong>هدف‌گذاری عینی:</strong> تمایل به تبدیل چشم‌اندازهای کلان به رفتارهای ساختاریافته روزمره.</div>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <div><strong>تاخیر در ارضای نیاز (Delayed Gratification):</strong> پایداری در برابر پاداش‌های زودرس به سود اهداف بلندمدت.</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pane-meta">
+                        <h4><i class="fa-solid fa-lightbulb"></i> کاربرد عملی در بحران</h4>
+                        <p>
+                            تکیه بر سیستم‌های تکرارپذیر و عادات خُرد به جای اتکا به نوسانات انگیزشی گذرا.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- بعد سوم: چالش -->
+                <div class="pane-layout" id="pane-challenge">
+                    <div class="pane-main">
+                        <h3>
+                            چالش
+                            <span class="term-en">(Challenge Appraisal & Adaptability)</span>
+                        </h3>
+                        <p class="summary">
+                            نگرش به موقعیت‌های جدید و غیرقابل پیش‌بینی نه به مثابه «تهدید برای بقا»، بلکه به منزله «بستری برای یادگیری». این بعد بازتاب مستقیم ذهنیت رشد (Growth Mindset) است.
+                        </p>
+                        <ul class="academic-points">
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <div><strong>ارزیابی مجدد شناختی:</strong> بازتعریف شکست به داده‌های یادگیری بدون فروپاشی هویت فردی.</div>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <div><strong>کنجکاوی شناختی:</strong> استقبال از عدم‌قطعیت با انگیزه توسعه ظرفیت‌های تجربی نو.</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pane-meta">
+                        <h4><i class="fa-solid fa-lightbulb"></i> کاربرد عملی در بحران</h4>
+                        <p>
+                            طرح این پرسش هدایت‌کننده پس از هر اشتباه: «این شکست چه دانشی درباره فرآیند کار در اختیار من گذاشت که پیش‌تر نداشتم؟»
+                        </p>
+                    </div>
+                </div>
+
+                <!-- بعد چهارم: اعتمادبه‌نفس -->
+                <div class="pane-layout" id="pane-confidence">
+                    <div class="pane-main">
+                        <h3>
+                            اعتمادبه‌نفس
+                            <span class="term-en">(Abilities & Interpersonal Confidence)</span>
+                        </h3>
+                        <p class="summary">
+                            باور استوار به شایستگی فردی برای مقابله با تکالیف پیچیده (خودکارآمدی بندورا) و توانایی بیان قاطعانه عقاید در مواجهه با مخالفت دیگران.
+                        </p>
+                        <ul class="academic-points">
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <div><strong>خودکارآمدی (Self-Efficacy):</strong> اعتقاد به کارآمدی توانمندی‌ها برای حل مسائل نوظهور.</div>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <div><strong>قاطعیت بین‌فردی (Assertiveness):</strong> ابراز مواضع شفاف بدون پرخاشگری یا انفعال.</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pane-meta">
+                        <h4><i class="fa-solid fa-lightbulb"></i> کاربرد عملی در بحران</h4>
+                        <p>
+                            تمرکز بر شواهد واقعی موفقیت‌های گذشته جهت خنثی‌سازی تحریف‌های شناختی مرتبط با سندروم ایمپاستر (احساس ناکافی بودن).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ابزار عملیاتی تنفس جعبه‌ای مبتنی بر عصب‌شناسی (Box Breathing) -->
+        <section id="tactical-breath">
+            <div class="breath-tool-container">
+                <div class="breath-info">
+                    <span class="badge-academic"><i class="fa-solid fa-heart-pulse"></i> تنظیم عصب واگ (Vagus Nerve)</span>
+                    <h3>ابزار تعاملی: پروتکل تنفس جعبه‌ای (Box Breathing)</h3>
+                    <p>
+                        پژوهش‌های نوروفیزیولوژی نشان می‌دهند که تنفس آگاهانه با نسبت‌های زمانی برابر، حساسیت بارورفلکس و فعالیت شاخه پاراسمپاتیک را تحریک کرده و ترشح نوراپی‌نفرین و کورتیزول ناشی از استرس حاد را کاهش می‌دهد.
+                    </p>
+                    <div class="breath-metrics">
+                        <div class="metric-badge">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>الگوی زمانی: ۴-۴-۴-۴ ثانیه</span>
+                        </div>
+                        <div class="metric-badge">
+                            <i class="fa-solid fa-brain"></i>
+                            <span>هدف: تعدیل برانگیختگی خودمختار</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="breath-toggle-btn" onclick="toggleBreathingSession()">
+                        <i class="fa-solid fa-play" id="breath-icon"></i>
+                        <span id="breath-label">شروع پروتکل تنفس</span>
+                    </button>
+                </div>
+
+                <div class="breath-visual-arena">
+                    <div class="breath-circle" id="breathOrb">
+                        <span class="breath-phase-text" id="phaseIndicator">آماده</span>
+                        <span class="breath-counter" id="timerCount">۴</span>
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); text-align: center;">
+                        <i class="fa-solid fa-circle-info"></i> تنفس عمیق شکمی (دیافراگمی) با انبساط و انقباض دایره
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- آزمون خودارزیابی تعاملی ۴ عاملی -->
+        <section id="assessment">
+            <div class="section-heading">
+                <span class="pill-tag">ابزار پایش</span>
+                <h2>خودارزیابی شاخص‌های رفتاری سرسختی</h2>
+                <p>
+                    این ابزار مبتنی بر رویکرد ارزیابی موقعیتی بر مبنای چهار بعد مدل MTQ طراحی شده است. نحوه واکنش واقعی خود را مشخص کنید:
+                </p>
+            </div>
+
+            <div class="assessment-card">
+                <!-- سوال ۱: کنترل هیجانی -->
+                <div class="quiz-item" data-question="1">
+                    <div class="quiz-title">
+                        <span class="dimension-tag">کنترل هیجانی</span>
+                        ۱. در صورت وقوع یک بحران پیش‌بینی‌نشده شغلی یا تحصیلی:
+                    </div>
+                    <div class="options-grid">
+                        <div class="option-box" onclick="recordAnswer(this, 1, 1)">دچار استیصال شدید می‌شوم</div>
+                        <div class="option-box" onclick="recordAnswer(this, 1, 2)">واکنش‌های تکانه‌ای نشان می‌دهم</div>
+                        <div class="option-box" onclick="recordAnswer(this, 1, 3)">پس از مقداری اضطراب آرام می‌شوم</div>
+                        <div class="option-box" onclick="recordAnswer(this, 1, 4)">بلافاصله بر گام‌های حل مسئله متمرکز می‌شوم</div>
+                    </div>
+                </div>
+
+                <!-- سوال ۲: تعهد -->
+                <div class="quiz-item" data-question="2">
+                    <div class="quiz-title">
+                        <span class="dimension-tag">تعهد و استمرار</span>
+                        ۲. هنگامی که یک پروژه مهم نیازمند تلاش فرسایشی طولانی‌مدت و بدون پاداش آنی است:
+                    </div>
+                    <div class="options-grid">
+                        <div class="option-box" onclick="recordAnswer(this, 2, 1)">پروژه را نیمه‌کاره رها می‌کنم</div>
+                        <div class="option-box" onclick="recordAnswer(this, 2, 2)">با تعلل بالا و کیفیت نازل پیش می‌برم</div>
+                        <div class="option-box" onclick="recordAnswer(this, 2, 3)">با نوسان انگیزه کار را ادامه می‌دهم</div>
+                        <div class="option-box" onclick="recordAnswer(this, 2, 4)">روتین‌های منظم تعریف کرده و تا پایان می‌ایستم</div>
+                    </div>
+                </div>
+
+                <!-- سوال ۳: چالش -->
+                <div class="quiz-item" data-question="3">
+                    <div class="quiz-title">
+                        <span class="dimension-tag">نگرش چالش‌محور</span>
+                        ۳. مواجهه با خطای پرهزینه یا شکستی آشکار در کار:
+                    </div>
+                    <div class="options-grid">
+                        <div class="option-box" onclick="recordAnswer(this, 3, 1)">آن را نشانه بی‌کفایتی دائم خود می‌دانم</div>
+                        <div class="option-box" onclick="recordAnswer(this, 3, 2)">عوامل بیرونی را مقصر می‌دانم</div>
+                        <div class="option-box" onclick="recordAnswer(this, 3, 3)">پس از مدتی خطاهایم را ارزیابی می‌کنم</div>
+                        <div class="option-box" onclick="recordAnswer(this, 3, 4)">آن را داده‌ای سودمند برای ارتقای رویکرد می‌بینم</div>
+                    </div>
+                </div>
+
+                <!-- سوال ۴: اعتمادبه‌نفس -->
+                <div class="quiz-item" data-question="4">
+                    <div class="quiz-title">
+                        <span class="dimension-tag">قاطعیت و خودکارآمدی</span>
+                        ۴. وقتی در یک جمع تخصصی، دیدگاه مستدل شما با مخالفت جدی دیگران روبرو می‌شود:
+                    </div>
+                    <div class="options-grid">
+                        <div class="option-box" onclick="recordAnswer(this, 4, 1)">فورا عقب‌نشینی و سکوت می‌کنم</div>
+                        <div class="option-box" onclick="recordAnswer(this, 4, 2)">مضطرب شده و توان دفاع را از دست می‌دهم</div>
+                        <div class="option-box" onclick="recordAnswer(this, 4, 3)">با تردید دیدگاه خود را بازگو می‌کنم</div>
+                        <div class="option-box" onclick="recordAnswer(this, 4, 4)">با متانت و ادله منطقی از موضعم دفاع می‌کنم</div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 32px;">
+                    <button class="btn btn-primary" onclick="computeAssessmentScore()">
+                        <i class="fa-solid fa-square-poll-vertical"></i>
+                        <span>محاسبه و تحلیل نتیجه</span>
+                    </button>
+                </div>
+
+                <!-- کادر نمایش تحلیل -->
+                <div class="quiz-feedback" id="evaluationCard">
+                    <h4 id="evalTitle">نتیجه تحلیل</h4>
+                    <p id="evalBody">لطفاً ابتدا به تمام پرسش‌ها پاسخ دهید.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- نظریه ارزیابی شناختی لازاروس و فولکمن -->
+        <section id="cognitive-models">
+            <div class="section-heading">
+                <span class="pill-tag">نوروساینس رفتاری</span>
+                <h2>ماتریس ارزیابی شناختی: چالش در برابر تهدید</h2>
+                <p>
+                    بر مبنای مدل روان‌شناختی لازاروس و فولکمن (Lazarus & Folkman)، شیوه ارزیابی اولیه مغز تعیین می‌کند که موقعیت استرس‌زا منجر به شکوفایی عملکرد شود یا اختلال عملکردی:
+                </p>
+            </div>
+
+            <div class="comparison-layout">
+                <!-- ارزیابی به عنوان چالش -->
+                <div class="cognitive-card challenge-type">
+                    <div class="card-header-bar">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <div>
+                            <h3>ارزیابی به مثابه چالش (Challenge Appraisal)</h3>
+                            <span style="font-size: 0.85rem; color: var(--primary); font-weight: 600;">پاسخ سازگارانه فیزیولوژیک</span>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <div><strong>ادراک منابع:</strong> فرد منابع روانی خود را برابر یا فراتر از نیازهای مسئله ارزیابی می‌کند.</div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <div><strong>پاسخ قلبی-عروقی:</strong> افزایش برون‌ده قلبی بدون انقباض شدید عروقی (بهبود خون‌رسانی مغزی).</div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <div><strong>جهت‌گیری رفتاری:</strong> تمرکز بر رویارویی فعال با مسئله (Problem-focused Coping).</div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <div><strong>تاب‌آوری نورونی:</strong> تعدیل مناسب محور HPA و ترشح متعادل هورمون DHEA.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- ارزیابی به عنوان تهدید -->
+                <div class="cognitive-card threat-type">
+                    <div class="card-header-bar">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <div>
+                            <h3>ارزیابی به مثابه تهدید (Threat Appraisal)</h3>
+                            <span style="font-size: 0.85rem; color: #64748b; font-weight: 600;">پاسخ ناسازگارانه و فرسایشی</span>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fa-solid fa-xmark"></i>
+                            <div><strong>ادراک منابع:</strong> فرد مقتضیات محیط را به مراتب فراتر از توانایی کنترل خود می‌بیند.</div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-xmark"></i>
+                            <div><strong>پاسخ قلبی-عروقی:</strong> افزایش مقاومت عروقی محیطی و افزایش بار فشاری روی قلب.</div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-xmark"></i>
+                            <div><strong>جهت‌گیری رفتاری:</strong> اجتناب، تعلل و رفتارهای مقابله‌ای هیجان‌مدار ناسالم.</div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-xmark"></i>
+                            <div><strong>فرسایش شناختی:</strong> مسدود شدن کارکردهای اجرایی قشر پره‌فرونتال توسط هجوم استرس مزمن.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- کادر ویژه و الزامی: نیاز به بررسی علمی (راستی‌آزمایی دقیق) -->
+        <section id="verification">
+            <div class="verification-container">
+                <div class="verification-tag">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    نیاز به بررسی و نقد علمی
+                </div>
+                <h3>راستی‌آزمایی گزاره‌های عامه‌پسند: «قانون ۴۰ درصد» و «نظریه ۲۱ روز شکل‌گیری عادت»</h3>
+                <p>
+                    <strong>۱. ادعای قانون ۴۰ درصد (40% Rule):</strong> در خرده‌فرهنگ‌های ورزشی و کتاب‌های انگیزشی عامه‌پسند مکرراً ادعا می‌شود که «هنگامی که مغز فرمان تسلیم می‌دهد، بدن انسان تنها به ۴۰ درصد ظرفیت واقعی خود رسیده است». در ادبیات آزمایشگاهی علوم ورزشی و نوروفیزیولوژی، هرچند مدل <em>«حاکم مرکزی» (Central Governor Model پیشنهادی توسط تیم نوآکس)</em> وجود مهار پیش‌گیرانه مغز را برای حفاظت از همئوستازی بدن تایید می‌کند، اما هیچ پژوهش کنترل‌شده بالینی عدد ثابت و قطعی «۴۰ درصد» را اثبات نکرده است و این عدد صرفاً یک برآورد انگیزشی غیرعلمی است.
+                </p>
+                <p>
+                    <strong>۲. ادعای زمان تثبیت ۲۱ روزه:</strong> پژوهش کنترل‌شده دانشگاه کالج لندن (UCL) توسط دکتر فیلیپا لالی و همکاران (۲۰۰۹) در ژورنال اروپایی روانشناسی اجتماعی نشان داد که زمان اتوماسیون یک عادت رفتاری به طور میانگین <strong>۶۶ روز</strong> (بین ۱۸ تا ۲۵۴ روز بسته به پیچیدگی رفتار) زمان می‌برد؛ بنابراین ادعای ۲۱ روزه بودن تثبیت عادات که از کتاب تجاری ماکسول مالتز در دهه ۱۹۶۰ نشأت گرفته، فاقد پشتوانه تجربی معتبر است.
+                </p>
+            </div>
+        </section>
+
+        <!-- مراجع دانشگاهی و استنادهای مستند -->
+        <section id="sources">
+            <div class="reference-wrapper">
+                <h3><i class="fa-solid fa-book-bookmark"></i> مرجع علمی اصلی این ارائه (Source of Framework)</h3>
+
+                <div class="citation-item">
+                    <div class="citation-title">۱. ساختار بنیادین ۴ ستون قدرت ذهنی (مدل Clough):</div>
+                    <span class="citation-apa">Clough, P., Earle, K., & Sewell, D. (2002). Mental toughness: The concept and its measurement. In I. Cockerill (Ed.), Solutions in sport psychology (pp. 32–43). London: Thomson Publishing.</span>
+                </div>
+
+                <div class="citation-item">
+                    <div class="citation-title">۲. ریشه‌شناسی سرسختی روان‌شناختی (نظریه Kobasa):</div>
+                    <span class="citation-apa">Kobasa, S. C. (1979). Stressful life events, personality, and health: An inquiry into hardiness. Journal of Personality and Social Psychology, 37(1), 1–11.</span>
+                </div>
+
+                <div class="citation-item">
+                    <div class="citation-title">۳. مدل ارزیابی شناختی استرس (نظریه Lazarus & Folkman):</div>
+                    <span class="citation-apa">Lazarus, R. S., & Folkman, S. (1984). Stress, appraisal, and coping. Springer Publishing Company.</span>
+                </div>
+
+                <div class="citation-item">
+                    <div class="citation-title">۴. تنظیم خودمختار از طریق تمرینات تنفسی ساختاریافته (پژوهش استنفورد):</div>
+                    <span class="citation-apa">Balban, M. Y., Neri, E., Kogon, M. M., Weed, L., Nouriani, B., Jo, B., Holl, G., Zeitzer, J. M., Spiegel, D., & Huberman, A. D. (2023). Brief structured respiration practices enhance mood and reduce physiological arousal. Cell Reports Medicine, 4(1), 100895.</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- فوتر پایانی -->
+    <footer>
+        <p>ارائه وبسایتی تعاملی «قدرت ذهنی» — ساخته شده توسط امیررضا کمالی</p>
+        <p style="margin-top: 8px; font-size: 0.8rem; color: var(--text-muted);">
+            طراحی شده با هوش مصنوعی | فونت وزیرمتن | پالت آبی مدرن
+        </p>
+    </footer>
+
+    <!-- منطق جاوا اسکریپت تعاملی -->
+    <script>
+        // ۱. نوار سنجش اسکرول صفحه
+        window.addEventListener('scroll', () => {
+            const currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollableHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const progressRatio = (currentScroll / scrollableHeight) * 100;
+            const tracker = document.getElementById('scroll-tracker');
+            if (tracker) {
+                tracker.style.width = progressRatio + '%';
+            }
+        });
+
+        // ۲. جابجایی تب‌های مدل 4C
+        function activateTab(tabKey) {
+            // به‌روزرسانی وضعیت دکمه‌ها
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
+
+            // به‌روزرسانی پنل‌ها
+            const panes = document.querySelectorAll('.pane-layout');
+            panes.forEach(pane => pane.classList.remove('active'));
+            const targetPane = document.getElementById('pane-' + tabKey);
+            if (targetPane) {
+                targetPane.classList.add('active');
+            }
+        }
+
+        // ۳. موتور کنترل تنفس جعبه‌ای (Box Breathing Engine)
+        let breathTimer = null;
+        let isSessionRunning = false;
+        let currentPhaseIdx = 0;
+        let secondsRemaining = 4;
+
+        const cycleStages = [
+            { label: "دَم عمیق شکمی", cssClass: "inhale" },
+            { label: "حبس در اوج دم", cssClass: "hold" },
+            { label: "بازدم آرام و پیوسته", cssClass: "exhale" },
+            { label: "حبس در حالت تخلیه", cssClass: "hold" }
+        ];
+
+        function toggleBreathingSession() {
+            const btnLabel = document.getElementById('breath-label');
+            const btnIcon = document.getElementById('breath-icon');
+            const orb = document.getElementById('breathOrb');
+            const phaseText = document.getElementById('phaseIndicator');
+            const timerDisplay = document.getElementById('timerCount');
+
+            if (!isSessionRunning) {
+                // آغاز پروتکل
+                isSessionRunning = true;
+                btnLabel.textContent = "توقف پروتکل تنفس";
+                btnIcon.className = "fa-solid fa-stop";
+                currentPhaseIdx = 0;
+                secondsRemaining = 4;
+                renderBreathPhase();
+
+                breathTimer = setInterval(() => {
+                    secondsRemaining--;
+                    if (secondsRemaining < 0) {
+                        currentPhaseIdx = (currentPhaseIdx + 1) % 4;
+                        secondsRemaining = 4;
+                        renderBreathPhase();
+                    } else {
+                        timerDisplay.textContent = secondsRemaining;
+                    }
+                }, 1000);
+            } else {
+                // خاتمه و بازنشانی
+                clearInterval(breathTimer);
+                isSessionRunning = false;
+                btnLabel.textContent = "شروع پروتکل تنفس";
+                btnIcon.className = "fa-solid fa-play";
+                orb.className = "breath-circle";
+                phaseText.textContent = "آماده";
+                timerDisplay.textContent = "۴";
+            }
+        }
+
+        function renderBreathPhase() {
+            const orb = document.getElementById('breathOrb');
+            const phaseText = document.getElementById('phaseIndicator');
+            const timerDisplay = document.getElementById('timerCount');
+
+            orb.className = "breath-circle " + cycleStages[currentPhaseIdx].cssClass;
+            phaseText.textContent = cycleStages[currentPhaseIdx].label;
+            timerDisplay.textContent = secondsRemaining;
+        }
+
+        // ۴. منطق آزمون خودارزیابی
+        const userResponses = { 1: null, 2: null, 3: null, 4: null };
+
+        function recordAnswer(element, qId, scoreVal) {
+            const parentGroup = element.parentElement;
+            const siblingBoxes = parentGroup.querySelectorAll('.option-box');
+            siblingBoxes.forEach(box => box.classList.remove('selected'));
+            element.classList.add('selected');
+            userResponses[qId] = scoreVal;
+        }
+
+        function computeAssessmentScore() {
+            const evalBox = document.getElementById('evaluationCard');
+            const titleEl = document.getElementById('evalTitle');
+            const bodyEl = document.getElementById('evalBody');
+
+            // بررسی تکمیل تمام پرسش‌ها
+            for (let i = 1; i <= 4; i++) {
+                if (userResponses[i] === null) {
+                    alert("لطفاً برای دریافت تحلیل معتبر، به تمامی چهار موقعیت پاسخ دهید.");
+                    return;
+                }
+            }
+
+            const totalScore = userResponses[1] + userResponses[2] + userResponses[3] + userResponses[4];
+            evalBox.classList.add('show');
+
+            if (totalScore >= 14) {
+                titleEl.innerHTML = `<i class="fa-solid fa-trophy" style="color: #059669;"></i> وضعیت عالی در شاخص‌های سرسختی ذهنی (امتیاز: ${totalScore} از ۱۶)`;
+                bodyEl.textContent = "الگوهای انتخابی شما حاکی از استفاده خودکار از استراتژی‌های ارزیابی چالش‌محور، تمایز روشن میان حوزه‌های نفوذ شخصی و بازداری مؤثر تکانه‌های هیجانی است. برای نگهداری این سطح، تمرین مداوم انعطاف‌پذیری شناختی توصیه می‌شود.";
+                evalBox.style.background = "#f0fdf4";
+                evalBox.style.borderColor = "#86efac";
+                titleEl.style.color = "#166534";
+                bodyEl.style.color = "#15803d";
+            } else if (totalScore >= 10) {
+                titleEl.innerHTML = `<i class="fa-solid fa-scale-balanced" style="color: #2563eb;"></i> وضعیت متوسط با پتانسیل رشد بالا (امتیاز: ${totalScore} از ۱۶)`;
+                bodyEl.textContent = "مهارت‌های پایه در حل مسئله دارید، اما در سناریوهای طولانی یا پرابهام ممکن است انرژی شناختی‌تان در اثر ارزیابی تهدید تحلیل رود. تقویت تفکیک مسئولیت فردی از عوامل محیطی می‌تواند این نمره را ارتقا دهد.";
+                evalBox.style.background = "#eff6ff";
+                evalBox.style.borderColor = "#93c5fd";
+                titleEl.style.color = "#1e40af";
+                bodyEl.style.color = "#1d4ed8";
+            } else {
+                titleEl.innerHTML = `<i class="fa-solid fa-compass" style="color: #d97706;"></i> غلبه الگوهای تهدیدمحور (امتیاز: ${totalScore} از ۱۶)`;
+                bodyEl.textContent = "واکنش‌های آنی شما بیشتر تحت تأثیر برانگیختگی هیجانی و ادراک کمبود منابع کنترل شخصی قرار دارد. استفاده منظم از تکنیک‌های کندسازی تنفس و شکستن اهداف به واحدهای خرد رفتاری، مسیر نورونی سازگارتری ایجاد خواهد کرد.";
+                evalBox.style.background = "#fffbeb";
+                evalBox.style.borderColor = "#fcd34d";
+                titleEl.style.color = "#b45309";
+                bodyEl.style.color = "#92400e";
+            }
+
+            evalBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>
+```
